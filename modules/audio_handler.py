@@ -1,16 +1,9 @@
 import pyaudio
-import wave
-import base64
-from io import BytesIO
 import base64
 import sounddevice as sd
 import numpy as np
 import wave
 from io import BytesIO
-
-from playsound import playsound
-from pydub import AudioSegment
-from pydub.playback import play
 
 CHUNK = 8096  # Number of frames in each buffer
 FORMAT = pyaudio.paInt16  # 16-bit format for better sound quality
@@ -109,24 +102,3 @@ class AudioHandler:
 
         except Exception as e:
             print(f"Error playing audio from base64: {e}")
-
-    # def play_audio_from_base64(self, audio_base64):
-    #     """Play audio from base64 encoded string."""
-    #     try:
-    #         audio_data = base64.b64decode(audio_base64)
-    #         wf = wave.open(BytesIO(audio_data), 'rb')
-    #
-    #         stream = self.audio.open(format=self.audio.get_format_from_width(wf.getsampwidth()),
-    #                                  channels=wf.getnchannels(),
-    #                                  rate=wf.getframerate(),
-    #                                  output=True)
-    #         data = wf.readframes(CHUNK)
-    #         while data:
-    #             stream.write(data)
-    #             data = wf.readframes(CHUNK)
-    #
-    #         stream.stop_stream()
-    #         stream.close()
-    #         print("Audio played from base64.")
-    #     except Exception as e:
-    #         print(f"Error playing audio from base64: {e}")
