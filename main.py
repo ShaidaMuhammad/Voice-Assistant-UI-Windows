@@ -75,10 +75,13 @@ class AudioAssistantApp(QtWidgets.QMainWindow, Ui_MainWindow):
         if audio_base64:
             response = self.api_handler.send_audio(endpoint, audio_base64)
             if response:
-                output_audio_base64 = response.get('output')
+                output_audio_base64 = response.get('response_audio')
+                output_in_text_formate = response.get('response_text')
+
                 if output_audio_base64:
                     self.audio_handler.play_audio_from_base64(output_audio_base64)
-                    self.statusBox.setPlainText("Audio played successfully.")
+                    # self.statusBox.setPlainText("Audio played successfully.")
+                    self.statusBox.setPlainText(output_in_text_formate)
                 else:
                     self.statusBox.setPlainText("No output received from the API.")
             else:
