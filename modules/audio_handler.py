@@ -3,10 +3,10 @@ import wave
 import base64
 from io import BytesIO
 
-CHUNK = 1024  # Number of frames in each buffer
+CHUNK = 8096  # Number of frames in each buffer
 FORMAT = pyaudio.paInt16  # 16-bit format for better sound quality
-CHANNELS = 1  # Mono recording
-RATE = 44100  # Sample rate in Hertz
+CHANNELS = 4  # Mono recording
+RATE = 48000  # Sample rate in Hertz
 WAVE_OUTPUT_FILENAME = "assets/output.wav"
 
 class AudioHandler:
@@ -32,7 +32,7 @@ class AudioHandler:
         """Read a chunk of audio from the stream and append to the frames."""
         if self.stream:
             try:
-                data = self.stream.read(CHUNK, exception_on_overflow=False)  # Capture audio chunk
+                data = self.stream.read(CHUNK, exception_on_overflow=True)  # Capture audio chunk
                 self.frames.append(data)  # Append captured data
                 print(f"Captured audio chunk of size {len(data)}")
             except Exception as e:
