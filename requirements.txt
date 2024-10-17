@@ -1,5 +1,4 @@
 PyQt5
 pyaudio
 requests
-pydub
 sounddevice
