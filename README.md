@@ -1,4 +1,4 @@
-# Audio Assistant Application
+# Voice Based Arabic AI Assistant Interface
 
 This is a PyQt5-based application that allows users to record audio, process it, and submit it to the ML-Backend API. It uses `pyaudio` for recording, `sounddevice` for audio playback, and `base64` encoding to send and receive audio data via the API.
 
